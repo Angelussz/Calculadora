@@ -8,13 +8,23 @@ import {useState} from 'react';
 import {evaluate} from 'mathjs';
 function App() {
   const [input,setInput] = useState("");
+  const [equal,isEqual] = useState(false);
   const agregarInput = (val)=>{
-    setInput(input+val)
+    if(equal){
+      setInput(val)
+      isEqual(false)
+      
+    }
+    else{
+      setInput(input+val)
+
+    }
 
   }
   const calcularResultado = ()=>{
     if(input){
       setInput(evaluate(input));
+      isEqual(true)
     }
     else{
       alert("Ingrese valores")
